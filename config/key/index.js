@@ -1,1 +1,0 @@
-module.exports = "mongodb://dallinmajor:Pin4Dallin@ds139645.mlab.com:39645/mern_starter"

@@ -37,7 +37,7 @@ module.exports = {
             .then(dbModel => dbModel.remove())
             .then(
                 db.User
-                    .findByIdAndUpdate(req.params.categoryId, {
+                    .findByIdAndUpdate(req.params.userId, {
                         $pull: { recipes: req.params.id }
                     })
                     .then(res.send('Deleted!'))

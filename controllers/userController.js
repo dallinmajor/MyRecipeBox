@@ -11,11 +11,8 @@ module.exports = {
         db.User
             .findById(req.params.id)
             .populate({
-                path: 'categories',
-                populate: {
-                    path: 'recipes',
-                    model: 'Recipe'
-                }
+                path: 'redipes',
+                model: 'Recipe'
             })
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(402).json(err));

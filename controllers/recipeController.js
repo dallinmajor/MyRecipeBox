@@ -17,11 +17,11 @@ module.exports = {
         db.Recipe
             .create(req.body)
             .then(recipe => {
-                db.Category
+                db.User
                 .findByIdAndUpdate(req.params.id, {
                     $push: { recipes: recipe._id}
                 })
-                .then(res.json(recipe));
+                .then(recipe => res.json(recipe));
             })
             .catch(err => res.status(402).json(err));
     },
@@ -36,7 +36,7 @@ module.exports = {
             .findByIdAndDelete(req.params.id)
             .then(dbModel => dbModel.remove())
             .then(
-                db.Category
+                db.User
                     .findByIdAndUpdate(req.params.categoryId, {
                         $pull: { recipes: req.params.id }
                     })

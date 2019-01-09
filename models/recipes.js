@@ -10,11 +10,6 @@ const RecipeSchema = new Schema ({
         type: String,
         require: true,
     },
-    category: {
-        require: true,
-        type: Schema.Types.ObjectId,
-        ref: 'Category'
-    },
     user: {
         require: true,
         type: Schema.Types.ObjectId,

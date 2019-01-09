@@ -7,6 +7,12 @@ module.exports = {
             .then(users => res.json(users))
             .catch(err => res.status(402).json(err));
     },
+    Validate: (req, res) => {
+        db.User
+            .find({ username: req.params.username, password: req.params.password})
+            .then(dbModel => res.json(dbModel))
+            .catch(err => res.status(402).json(err));
+    },
     findById: (req, res) => {
         db.User
             .findById(req.params.id)

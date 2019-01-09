@@ -6,6 +6,9 @@ const UserController = require('../../controllers/userController');
 router.route('/')
     .post(UserController.create)
 
+router.route('/validate/:username/:password')
+    .get(UserController.Validate)
+
 router.route('/all')
     .get(UserController.findAll)
 

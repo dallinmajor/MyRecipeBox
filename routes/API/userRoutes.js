@@ -1,5 +1,7 @@
 const router = require('express').Router();
-const UserController = require('../../controllers/userControllers');
+const UserController = require('../../controllers/userController');
+
+// ROUTE /api/user...
 
 router.route('/')
     .post(UserController.create)
@@ -9,8 +11,7 @@ router.route('/all')
 
 router.route('/:id')
     .get(UserController.findById)
-
-router.route('/validate/:username')
-    .get(UserController.Validate)
+    .put(UserController.update)
+    .delete(UserController.remove)
 
 module.exports = router;

@@ -6,7 +6,7 @@ module.exports = {
             .catch(err => console.log(err));
     },
     validate: function (username) {
-        return axios.get(`/api/user/validate/${username}`)
+        return axios.get(`/api/user/validate/${username}/${password}`)
             .catch(err => console.log(err));
     },
     get: function (id) {

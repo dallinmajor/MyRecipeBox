@@ -6,14 +6,9 @@ import React, { Component } from 'react';
 
 class RecipeForm extends Component {
 
-    handleSetUser = (username) => {
-        API.User.validate(username)
-            .then(res => this.props.setUser(res.data[0]));
-    }
-
     render() {
         return (
-            <div>
+            <div class='container'>
                 <form>
                     <div class="form-group">
                         <label for="exampleFormControlInput1">Email address</label>

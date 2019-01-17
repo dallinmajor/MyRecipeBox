@@ -5,28 +5,48 @@ import React, { Component } from 'react';
 
 
 class RecipeForm extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            inputVal: '',
+            htmlVal: ''
+        }
+    }
+
+    sanatizeInput = (input) => {
+        return input.replace(/<.*?script|style=|class=/g, '');
+    }
+
+    handleOnChange = (e) => {
+        let input = this.sanatizeInput(e.target.value);
+        this.setState({
+            inputVal: input,
+            htmlVal: '<p>' + input.replace(/(?:\r\n|\r|\n)/g, '<br/>') + '</p>'
+        });
+        console.log(this.state.inputVal);
+        console.log(this.state.htmlVal);
+    }
 
     render() {
         return (
             <div class='container'>
                 <form>
                     <div class="form-group">
-                        <label for="exampleFormControlInput1">Email address</label>
-                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" />
+                        <label for="exampleFormControlInput1">Recipe Name</label>
+                        <input class="form-control" id="exampleFormControlInput1" placeholder="" />
                     </div>
                     <div class="form-group">
-                        <label for="exampleFormControlSelect1">Example select</label>
+                        <label for="exampleFormControlSelect1">Category</label>
                         <select class="form-control" id="exampleFormControlSelect1">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
+                            <option>Deserts</option>
+                            <option>Soups</option>
+                            <option>Sandwiches</option>
+                            <option>Salads</option>
+                            <option>Cookies</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Example textarea</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        <textarea class="form-control" value={this.state.inputVal} onChange={this.handleOnChange} id="exampleFormControlTextarea1" rows="10"></textarea>
                     </div>
                 </form>
             </div>

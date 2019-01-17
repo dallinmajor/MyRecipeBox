@@ -7,3 +7,8 @@ body {
 .card {
   width: 18rem;
 }
+
+.recipe-card {
+  margin-top: 50px;
+  padding: 20px;
+}

@@ -9,8 +9,9 @@ export default class App extends Component {
     return (
       <div>
         <Navbar />
-        <RecipeForm/>
-        {/* <div className='container'>
+        <div class='container'>
+          <RecipeForm />
+          {/* <div className='container'>
           <Card />
           <Card />
           <Card />
@@ -20,6 +21,7 @@ export default class App extends Component {
           <Card />
           <Card />
         </div> */}
+        </div>
       </div>
     );
   }

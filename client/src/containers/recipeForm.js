@@ -29,15 +29,15 @@ class RecipeForm extends Component {
 
     render() {
         return (
-            <div class='container'>
+            <div className="recipe-card">
                 <form>
-                    <div class="form-group">
+                    <div className="form-group">
                         <label for="exampleFormControlInput1">Recipe Name</label>
-                        <input class="form-control" id="exampleFormControlInput1" placeholder="" />
+                        <input className="form-control" id="exampleFormControlInput1" placeholder="" />
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Category</label>
-                        <select class="form-control" id="exampleFormControlSelect1">
+                        <select className="form-control" id="exampleFormControlSelect1">
                             <option>Deserts</option>
                             <option>Soups</option>
                             <option>Sandwiches</option>
@@ -45,8 +45,8 @@ class RecipeForm extends Component {
                             <option>Cookies</option>
                         </select>
                     </div>
-                    <div class="form-group">
-                        <textarea class="form-control" value={this.state.inputVal} onChange={this.handleOnChange} id="exampleFormControlTextarea1" rows="10"></textarea>
+                    <div className="form-group">
+                        <textarea className="form-control" value={this.state.inputVal} onChange={this.handleOnChange} id="exampleFormControlTextarea1" rows="10"></textarea>
                     </div>
                 </form>
             </div>

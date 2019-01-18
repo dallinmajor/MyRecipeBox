@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Input, TextArea, FormBtn } from "../components/Form";
+import { Input, TextArea, FormBtn, SelectInput } from "../components/Form";
 import { connect } from 'react-redux';
 // import { setUser } from '../store/actions';
-import { bindActionCreators } from 'redux';
+// import { bindActionCreators } from 'redux';
 
 
 class RecipeForm extends Component {
@@ -38,7 +38,8 @@ class RecipeForm extends Component {
     }
 
     render() {
-        return (
+        console.log(this.props)
+        return this.props.categories ? (
             <form>
                 <Input
                     value={this.state.recipeName}
@@ -46,9 +47,16 @@ class RecipeForm extends Component {
                     placeholder="Recipe Name"
                     onChange={this.handleInputChange}
                 />
+                <SelectInput 
+                    value={this.state.category}
+                    name="category"
+                    label="Category"
+                    onChange={this.handleOnChange}
+                    options={this.props.categories}
+                />
 
             </form>
-        )
+        ) : null;
     }
 }
 
@@ -64,5 +72,3 @@ const mapStateToProps = (state) => {
 // }
 
 export default connect(mapStateToProps)(RecipeForm);
-
-export default RecipeForm

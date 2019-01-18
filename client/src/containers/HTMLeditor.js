@@ -5,7 +5,7 @@ class HTMLeditor extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            inputValue: ''
+            inputVal: ''
         }
     }
 
@@ -14,6 +14,7 @@ class HTMLeditor extends Component {
     }
 
     handleOnChange = (e) => {
+        console.log(e)
         let input = this.sanatizeInput(e.target.value);
         this.setState({
             inputVal: input,
@@ -23,9 +24,9 @@ class HTMLeditor extends Component {
     render() {
         return (
             <TextArea
-                value={this.state.inputValue}
+                value={this.state.inputVal}
                 onChange={this.handleOnChange}
-                rows='6'
+                rows='10'
             />
         )
     }

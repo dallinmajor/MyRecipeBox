@@ -24,8 +24,9 @@ class RecipeForm extends Component {
             [name]: value
         });
     };
-    
+
     handleHTMLeditChange = (edit) => {
+        console.log(edit)
         this.setState({
             recipe: edit
         })
@@ -55,10 +56,10 @@ class RecipeForm extends Component {
                         name='description'
                         onChange={this.handleInputChange}
                         placeholder='Description (optional)'
-                        rows="4"
+                        rows="3"
                     />
                     <HTMLeditor
-                        onEditChange={}
+                        onEditChange={this.handleHTMLeditChange}
                     />
                 </form>
             </Border>

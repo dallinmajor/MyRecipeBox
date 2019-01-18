@@ -1,17 +1,27 @@
 import React, { Component } from 'react';
-// import { connect } from 'react-redux';
+import { Input, TextArea, FormBtn } from "../components/Form";
+import { connect } from 'react-redux';
 // import { setUser } from '../store/actions';
-// import { bindActionCreators } from 'redux';
+import { bindActionCreators } from 'redux';
 
 
 class RecipeForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            inputVal: '',
-            htmlVal: ''
+            recipeName: '',
+            category: '',
+            description: '',
+            recipe: ''
         }
     }
+
+    handleInputChange = event => {
+        const { name, value } = event.target;
+        this.setState({
+            [name]: value
+        });
+    };
 
     sanatizeInput = (input) => {
         return input.replace(/<.*?script|style=|class=/g, '');
@@ -29,42 +39,30 @@ class RecipeForm extends Component {
 
     render() {
         return (
-            <div className="recipe-card">
-                <form>
-                    <div className="form-group">
-                        <label for="exampleFormControlInput1">Recipe Name</label>
-                        <input className="form-control" id="exampleFormControlInput1" placeholder="" />
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleFormControlSelect1">Category</label>
-                        <select className="form-control" id="exampleFormControlSelect1">
-                            <option>Deserts</option>
-                            <option>Soups</option>
-                            <option>Sandwiches</option>
-                            <option>Salads</option>
-                            <option>Cookies</option>
-                        </select>
-                    </div>
-                    <div className="form-group">
-                        <textarea className="form-control" value={this.state.inputVal} onChange={this.handleOnChange} id="exampleFormControlTextarea1" rows="10"></textarea>
-                    </div>
-                </form>
-            </div>
+            <form>
+                <Input
+                    value={this.state.recipeName}
+                    name="recipeName"
+                    placeholder="Recipe Name"
+                    onChange={this.handleInputChange}
+                />
+
+            </form>
         )
     }
 }
 
-// const mapStateToProps = (state) => {
-//     return {
-//         user: state.user
-//     }
-// }
+const mapStateToProps = (state) => {
+    return {
+        categories: state.categories
+    }
+}
 
 // const mapDispatchToProps = (dispatch) => {
 
 //     return bindActionCreators({ setUser: setUser }, dispatch);
 // }
 
-// export default connect(mapStateToProps, mapDispatchToProps)(Page);
+export default connect(mapStateToProps)(RecipeForm);
 
 export default RecipeForm

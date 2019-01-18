@@ -1,5 +1,9 @@
 import React from 'react';
 
-export const Border = ({children}) => {
+const Border = ({children}) => (
+    <div className='border-1'>
+        {children}
+    </div>
+)
 
-}
+export default Border;

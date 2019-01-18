@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Input, TextArea, FormBtn, SelectInput } from "../components/Form";
 import { connect } from 'react-redux';
+import Border from '../components/Wrappers/border';
+import HTMLeditor from './HTMLeditor';
 // import { setUser } from '../store/actions';
 // import { bindActionCreators } from 'redux';
 
@@ -12,7 +14,7 @@ class RecipeForm extends Component {
             recipeName: '',
             category: '',
             description: '',
-            recipe: ''
+            recipe: '',
         }
     }
 
@@ -22,40 +24,44 @@ class RecipeForm extends Component {
             [name]: value
         });
     };
-
-    sanatizeInput = (input) => {
-        return input.replace(/<.*?script|style=|class=/g, '');
-    }
-
-    handleOnChange = (e) => {
-        let input = this.sanatizeInput(e.target.value);
+    
+    handleHTMLeditChange = (edit) => {
         this.setState({
-            inputVal: input,
-            htmlVal: '<p>' + input.replace(/(?:\r\n|\r|\n)/g, '<br/>') + '</p>'
-        });
-        console.log(this.state.inputVal);
-        console.log(this.state.htmlVal);
+            recipe: edit
+        })
     }
-
+    
     render() {
         console.log(this.props)
         return this.props.categories ? (
-            <form>
-                <Input
-                    value={this.state.recipeName}
-                    name="recipeName"
-                    placeholder="Recipe Name"
-                    onChange={this.handleInputChange}
-                />
-                <SelectInput 
-                    value={this.state.category}
-                    name="category"
-                    label="Category"
-                    onChange={this.handleOnChange}
-                    options={this.props.categories}
-                />
+            <Border>
+                <form>
 
-            </form>
+                    <Input
+                        value={this.state.recipeName}
+                        name="recipeName"
+                        placeholder="Recipe Name"
+                        onChange={this.handleInputChange}
+                    />
+                    <SelectInput
+                        value={this.state.category}
+                        name="category"
+                        label="Category"
+                        onChange={this.handleInputChange}
+                        options={this.props.categories}
+                    />
+                    <TextArea
+                        value={this.state.description}
+                        name='description'
+                        onChange={this.handleInputChange}
+                        placeholder='Description (optional)'
+                        rows="4"
+                    />
+                    <HTMLeditor
+                        onEditChange={}
+                    />
+                </form>
+            </Border>
         ) : null;
     }
 }

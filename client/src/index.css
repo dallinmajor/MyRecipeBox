@@ -8,8 +8,9 @@ body {
   width: 18rem;
 }
 
-.recipe-card {
-  margin-top: 50px;
-  padding: 40px;
-  border: 1.5px rgb(204, 204, 204) solid
+.border-1 {
+  margin-top: 100px;
+  padding: 50px;
+  border: 1.5px rgb(204, 204, 204) solid;
+  border-radius: 6px;
 }

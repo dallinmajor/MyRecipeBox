@@ -3,6 +3,8 @@ import Page from './containers/page';
 import Navbar from './components/navbar';
 import Card from './components/card';
 import RecipeForm from './containers/recipeForm';
+import Overlay from './components/Overlays/overlay';
+import OverLay from './components/Overlays/overlay';
 
 export default class App extends Component {
   render() {
@@ -10,17 +12,10 @@ export default class App extends Component {
       <div>
         <Navbar />
         <div class='container'>
-          <RecipeForm />
-          {/* <div className='container'>
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-        </div> */}
+
+          <OverLay>
+            <RecipeForm />
+          </OverLay>
         </div>
       </div>
     );

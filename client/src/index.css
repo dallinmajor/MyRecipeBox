@@ -1,3 +1,7 @@
+html {
+  display: block;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -13,4 +17,20 @@ body {
   padding: 50px;
   border: 1.5px rgb(204, 204, 204) solid;
   border-radius: 6px;
+}
+
+.overlay-1 {
+  position: fixed; /* Sit on top of the page content */
+  display: none; /* Hidden by default */
+  width: 100%; /* Full width (cover the whole page) */
+  height: 100%; /* Full height (cover the whole page) */
+  top: 0; 
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+  z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+  transition-timing-function: ease-in-out;
+  padding: 50px;
+  justify-content: center;
 }

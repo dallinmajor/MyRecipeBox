@@ -40,8 +40,7 @@ class RecipeForm extends Component {
             category: this.state.category,
             user: "Dallin Major"
         }
-
-        console.log(newRecipeObj)
+        
     }
     
     render() {

@@ -6,6 +6,12 @@ const RecipeSchema = new Schema ({
         type: String,
         require: true
     },
+    description: {
+        type: String,
+    },
+    category: {
+        type: String
+    },
     recipe: {
         type: String,
         require: true,

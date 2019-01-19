@@ -26,14 +26,25 @@ class RecipeForm extends Component {
     };
 
     handleHTMLeditChange = (edit) => {
-        console.log(edit)
         this.setState({
             recipe: edit
         })
     }
+    handleSubmit = (e) => {
+        e.preventDefault();
+        
+        const newRecipeObj = {
+            recipe: this.state.recipe,
+            name: this.state.recipeName,
+            description: this.state.description,
+            category: this.state.category,
+            user: "Dallin Major"
+        }
+
+        console.log(newRecipeObj)
+    }
     
     render() {
-        console.log(this.props)
         return this.props.categories ? (
             <Border>
                 <form>
@@ -61,6 +72,11 @@ class RecipeForm extends Component {
                     <HTMLeditor
                         onEditChange={this.handleHTMLeditChange}
                     />
+                    <FormBtn
+                        onClick={this.handleSubmit}
+                    >
+                    Submit
+                    </FormBtn>
                 </form>
             </Border>
         ) : null;

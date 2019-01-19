@@ -14,7 +14,6 @@ class HTMLeditor extends Component {
     }
 
     handleOnChange = (e) => {
-        console.log(e)
         let input = this.sanatizeInput(e.target.value);
         this.setState({
             inputVal: input,

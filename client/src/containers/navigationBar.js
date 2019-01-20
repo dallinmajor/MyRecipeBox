@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Nav, Navbar, NavDropdown, NavItem, MenuItem, FormGroup, Button, FormControl } from 'react-bootstrap';
+import { Nav, Navbar, NavDropdown, NavItem, MenuItem, FormGroup, FormControl } from 'react-bootstrap';
 import { connect } from 'react-redux';
+import { BrowserRouter as Link } from "react-router-dom";
 
 class NavigationBar extends Component {
     render() {

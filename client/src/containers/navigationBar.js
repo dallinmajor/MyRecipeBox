@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { Nav, Navbar, NavDropdown, NavItem, MenuItem, FormGroup, Button, FormControl } from 'react-bootstrap';
 import { connect } from 'react-redux';
+import Card_1 from '../components/Wrappers/card_1';
+import RecipeFrom from './recipeForm';
+
+const 
 
 class NavigationBar extends Component {
     render() {

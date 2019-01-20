@@ -9,4 +9,6 @@ const Card_1 = ({children}) => {
             </div>  
         </OverLay>
     )
-}
+};
+
+export default Card_1;

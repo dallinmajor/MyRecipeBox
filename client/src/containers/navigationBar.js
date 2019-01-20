@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 import { Nav, Navbar, NavDropdown, NavItem, MenuItem, FormGroup, Button, FormControl } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import Card_1 from '../components/Wrappers/card_1';
-import RecipeFrom from './recipeForm';
-
-const 
 
 class NavigationBar extends Component {
     render() {
@@ -33,7 +29,7 @@ class NavigationBar extends Component {
                     </Nav>
                     <Nav pullRight>
                         <NavItem eventKey={1} href="#">Link</NavItem>
-                        <NavItem eventKey={2} href="#"> Link</NavItem>
+                        <NavItem eventKey={2} href="/recipe/new">New Recipe</NavItem>
                         <NavItem eventKey={2} href="#">Logout</NavItem>               
                     </Nav>
                 </Navbar.Collapse>

@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-import Page from './containers/page';
 import NavigationBar from './containers/navigationBar';
-import Card from './components/card';
-import RecipeForm from './containers/recipeForm';
-import Overlay from './components/Overlays/overlay';
-import OverLay from './components/Overlays/overlay';
-import { Nav, Navbar, NavDropdown, NavItem, MenuItem } from 'react-bootstrap';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import Card_1 from '../components/Wrappers/card_1';
+import RecipeForm from './recipeForm';
+
+const AddRecipe = () => <Card_1><RecipeForm/></Card_1>;
 
 
 export default class App extends Component {
@@ -16,7 +14,7 @@ export default class App extends Component {
         <NavigationBar />
         {/* <Body></Body> */}
         <Router>
-          <Route/>
+          <Route path='/recipe/new' Component={AddRecipe}/>
           <Route/>
           <Route/>
         </Router>

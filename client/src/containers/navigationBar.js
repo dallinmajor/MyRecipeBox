@@ -28,16 +28,9 @@ class NavigationBar extends Component {
                         </NavDropdown>
                     </Nav>
                     <Nav pullRight>
-                        <NavItem eventKey={1} href="#">
-                            Link
-        </NavItem>
-                        <NavItem eventKey={2} href="#">
-                            Link
-        </NavItem>
-
-                        <NavItem eventKey={2} href="#">
-                            Logout
-                            </NavItem>
+                        <NavItem eventKey={1} href="#">Link</NavItem>
+                        <NavItem eventKey={2} href="#"> Link</NavItem>
+                        <NavItem eventKey={2} href="#">Logout</NavItem>               
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>

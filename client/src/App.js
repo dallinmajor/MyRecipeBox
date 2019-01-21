@@ -18,12 +18,9 @@ export default class App extends Component {
       <Router>
         <div>
           <NavigationBar />
-          {/* <Body></Body> */}
-
           <Route path='/recipe/new' Component={AddRecipe} />
           <Route />
           <Route />
-
         </div>
       </Router >
     )

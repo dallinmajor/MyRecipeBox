@@ -30,6 +30,7 @@ class NavigationBar extends Component {
                     </Nav>
                     <Nav pullRight>
                         <NavItem eventKey={1} href="#"></NavItem>
+                        <Link to='/recipe/nrew'>New Recipe</Link>
                         <NavItem eventKey={2} href="/recipe/new">New Recipe</NavItem>
                         <NavItem eventKey={2} href="#">Logout</NavItem>               
                     </Nav>

@@ -4,7 +4,9 @@ import categoriesReducer from './categories_reducer';
 
 const rootReducer = combineReducers({
   user: userReducer,
-  categories: categoriesReducer
+  categories: categoriesReducer,
+  view: null,
+  recipeOnDisplay: null
 });
 
 export default rootReducer;

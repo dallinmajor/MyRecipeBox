@@ -1,15 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { setUser } from '../store/actions';
-import { bindActionCreators } from 'redux';
+import { ButtonToolbar, Button } from 'react-bootstrap';
+import { Container } from '../components/Grid';
 
 class Page extends Component {
 
     render() {
         return (
-            <div>
-
-            </div>
+            <Container>
+                <ButtonToolbar>
+                    <Button bsStyle="primary" bsSize="large" active>
+                        New
+                    </Button>
+                    <Button bsSize="large" active>
+                        Search by name
+                    </Button>
+                </ButtonToolbar>
+            </Container>
         )
     }
 }

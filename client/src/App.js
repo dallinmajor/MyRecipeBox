@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import NavigationBar from './containers/navigationBar';
 import Card_1 from './components/Wrappers/card_1';
 import RecipeForm from './containers/recipeForm';
+import Page from './containers/page';
 
 const AddRecipe = () => {
   console.log('this was ran')
@@ -16,6 +17,7 @@ export default class App extends Component {
     return (
       <div>
         <NavigationBar />
+        <Page/>
       </div>
     )
   }

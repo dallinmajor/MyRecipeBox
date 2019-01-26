@@ -29,3 +29,8 @@ body {
   padding: 50px;
   justify-content: center;
 }
+
+.testing {
+  width: 50%;
+  background-color: white;
+}

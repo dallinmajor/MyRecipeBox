@@ -47,7 +47,6 @@ class RecipeForm extends Component {
         return this.props.categories ? (
             <Border>
                 <form>
-
                     <Input
                         value={this.state.recipeName}
                         name="recipeName"

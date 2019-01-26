@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Input, TextArea, FormBtn, SelectInput } from "../components/Form";
 import { connect } from 'react-redux';
-import Border from '../components/Wrappers/border';
 import HTMLeditor from './HTMLeditor';
 // import { setUser } from '../store/actions';
 // import { bindActionCreators } from 'redux';
@@ -32,7 +31,7 @@ class RecipeForm extends Component {
     }
     handleSubmit = (e) => {
         e.preventDefault();
-        
+
         const newRecipeObj = {
             recipe: this.state.recipe,
             name: this.state.recipeName,
@@ -40,43 +39,41 @@ class RecipeForm extends Component {
             category: this.state.category,
             user: "Dallin Major"
         }
-        
+
     }
-    
+
     render() {
         return this.props.categories ? (
-            <Border>
-                <form>
-                    <Input
-                        value={this.state.recipeName}
-                        name="recipeName"
-                        placeholder="Recipe Name"
-                        onChange={this.handleInputChange}
-                    />
-                    <SelectInput
-                        value={this.state.category}
-                        name="category"
-                        label="Category"
-                        onChange={this.handleInputChange}
-                        options={this.props.categories}
-                    />
-                    <TextArea
-                        value={this.state.description}
-                        name='description'
-                        onChange={this.handleInputChange}
-                        placeholder='Description (optional)'
-                        rows="3"
-                    />
-                    <HTMLeditor
-                        onEditChange={this.handleHTMLeditChange}
-                    />
-                    <FormBtn
-                        onClick={this.handleSubmit}
-                    >
+            <form>
+                <Input
+                    value={this.state.recipeName}
+                    name="recipeName"
+                    placeholder="Recipe Name"
+                    onChange={this.handleInputChange}
+                />
+                <SelectInput
+                    value={this.state.category}
+                    name="category"
+                    label="Category"
+                    onChange={this.handleInputChange}
+                    options={this.props.categories}
+                />
+                <TextArea
+                    value={this.state.description}
+                    name='description'
+                    onChange={this.handleInputChange}
+                    placeholder='Description (optional)'
+                    rows="3"
+                />
+                <HTMLeditor
+                    onEditChange={this.handleHTMLeditChange}
+                />
+                <FormBtn
+                    onClick={this.handleSubmit}
+                >
                     Submit
                     </FormBtn>
-                </form>
-            </Border>
+            </form>
         ) : null;
     }
 }

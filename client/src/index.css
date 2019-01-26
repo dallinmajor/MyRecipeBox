@@ -30,7 +30,7 @@ body {
   justify-content: center;
 }
 
-.testing {
-  width: 50%;
+.card-1 {
   background-color: white;
+  border: 2px gray solid;
 }

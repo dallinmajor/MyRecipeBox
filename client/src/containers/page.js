@@ -2,14 +2,29 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { ButtonToolbar, Button } from 'react-bootstrap';
 import { Container } from '../components/Grid';
+import RecipeForm from '../containers/recipeForm';
 
 class Page extends Component {
+    constructor (props) {
+        super(props);
+        this.state = {
+            isCreating: false
+        }
+    }
+    handleNewRecipeClick = () => {
+        this.setState({isCreating: true})
+    }
+
+    exitNewRecipe = () => {
+        this.setState({isCreating: false})
+    }
 
     render() {
         return (
-            <Container>
+            <div>
+                <Container>
                 <ButtonToolbar>
-                    <Button bsStyle="primary" bsSize="large" active>
+                    <Button onClick={this.handleNewRecipeClick} bsStyle="primary" bsSize="large" active>
                         New
                     </Button>
                     <Button bsSize="large" active>
@@ -17,6 +32,9 @@ class Page extends Component {
                     </Button>
                 </ButtonToolbar>
             </Container>
+            {this.state.isCreating ? <RecipeForm onXClicked={this.exitNewRecipe}/> : null}
+            </div>
+            
         )
     }
 }

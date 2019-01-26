@@ -1,15 +1,17 @@
 import React from 'react';
-import OverLay from '../Overlays/overlay';
 
-const Card_1 = ({addClass = '', children}) => {
+const Card_1 = ({ addClass = '',cardTitle = '', xClicked, children}) => {
 
 
     return (
-        <OverLay>
-            <div className={'card_1' + addClass}>
-                {children}
-            </div>  
-        </OverLay>
+        <div className={'card-1' + addClass}>
+        <div className='card-head'>
+            <div className='card-title'>{cardTitle}</div>
+            <div className='card-exit' onClick={() => xClicked ? xClicked(): null}>X</div>
+        </div>
+            
+            {children}
+        </div>
     )
 };
 

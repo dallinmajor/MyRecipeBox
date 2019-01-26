@@ -26,11 +26,37 @@ body {
   background-color: rgba(0,0,0,0.5); /* Black background with opacity */
   z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
   transition-timing-function: ease-in-out;
-  padding: 50px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
   justify-content: center;
 }
 
 .card-1 {
+  padding: 0 20px 20px 20px;
   background-color: white;
-  border: 2px gray solid;
+  border: 2px black solid;
+  width: 40%;
+  border-radius: 6px;
+}
+
+.card-head {
+  display: grid;
+  grid-template-columns: 10fr 1fr;
+  border-bottom: 2px gray solid;
+  margin-bottom: 25px;
+}
+
+.card-title {
+  text-align: center;
+  font-size: 40px;
+}
+
+.card-exit {
+  font-size: 18px;
+  color: gray;
+  margin-top: 10px;
+  text-align: right;
 }

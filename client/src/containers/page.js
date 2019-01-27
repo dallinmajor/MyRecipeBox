@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { ButtonToolbar, Button } from 'react-bootstrap';
 import { Container } from '../components/Grid';
 import RecipeForm from '../containers/recipeForm';
+import Card from '../components/card';
 
 class Page extends Component {
     constructor (props) {
@@ -19,20 +20,32 @@ class Page extends Component {
         this.setState({isCreating: false})
     }
 
+    recipeClicked = (recipe) => {
+        console.log(recipe);
+    }
+
     render() {
         return (
             <div>
                 <Container>
                 <ButtonToolbar>
                     <Button onClick={this.handleNewRecipeClick} bsStyle="primary" bsSize="large" active>
-                        New
+                        New Recipe
                     </Button>
                     <Button bsSize="large" active>
                         Search by name
                     </Button>
                 </ButtonToolbar>
+                {this.props.recipes ? this.props.recipes.map(recipe => {
+                    return <Card
+                                title={recipe.name}
+                                description={recipe.description}
+                                recipe={[recipe.recipe]}
+                                recipeClicked={this.recipeClicked}
+                            />
+                }) : null}
             </Container>
-            {this.state.isCreating ? <RecipeForm onXClicked={this.exitNewRecipe}/> : null}
+            {this.state.isCreating ? <RecipeForm exitCard={this.exitNewRecipe}/> : null}
             </div>
             
         )

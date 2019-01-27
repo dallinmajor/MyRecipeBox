@@ -24,6 +24,7 @@ class RecipeForm extends Component {
         this.setState({
             [name]: value
         });
+        console.log(event);
     };
 
     handleHTMLeditChange = (edit) => {
@@ -41,13 +42,14 @@ class RecipeForm extends Component {
             category: this.state.category,
             user: "Dallin Major"
         }
-
+        console.log(newRecipeObj);
+        this.props.exitCard();
     }
 
     render() {
         return this.props.categories ? (
             <OverLay>
-                <Card_1 cardTitle='New Recipe' xClicked={this.props.onXClicked}>
+                <Card_1 cardTitle='New Recipe' xClicked={this.props.exitCard}>
                     <form>
                         <Input
                             value={this.state.recipeName}

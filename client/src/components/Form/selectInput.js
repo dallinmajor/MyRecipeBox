@@ -1,9 +1,8 @@
 import React from 'react';
 
-export const SelectInput = ({label, handleOnChange, options, value, name}) => (
+export const SelectInput = ({onChange, options, value, name}) => (
     <div className="form-group">
-        <label for="exampleFormControlSelect1">{label}</label>
-        <select className="form-control" name={name} onChange={handleOnChange} value={value}>
+        <select className="form-control" name={name} onChange={(e) => onChange(e)} value={value}>
         {options.map(option => (
             <option>{option}</option>
         ))}

@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import {bindActionCreators} from 'redux';
 import { ButtonToolbar, Button } from 'react-bootstrap';
 import { Container } from '../components/Grid';
 import RecipeForm from '../containers/recipeForm';
 import Card from '../components/card';
 import Body from '../components/Wrappers/body';
+import setRecipe from '../store/actions/recipeActions';
 
 class Page extends Component {
     constructor (props) {
@@ -49,6 +51,7 @@ class Page extends Component {
                 </Body>   
             </Container>
             {this.state.isCreating ? <RecipeForm exitCard={this.exitNewRecipe}/> : null}
+            {this.state.recipeOnDisplay ? null : null}
             </div>
             
         )
@@ -63,4 +66,8 @@ const mapStateToProps = (state) => {
     }
 };
 
-export default connect(mapStateToProps)(Page);
+function mapDipsatchToProps(dispatch) {
+    return bindActionCreators({ setRecipe }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDipsatchToProps)(Page);

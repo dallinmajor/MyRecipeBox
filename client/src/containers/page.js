@@ -4,6 +4,7 @@ import { ButtonToolbar, Button } from 'react-bootstrap';
 import { Container } from '../components/Grid';
 import RecipeForm from '../containers/recipeForm';
 import Card from '../components/card';
+import Body from '../components/Wrappers/body';
 
 class Page extends Component {
     constructor (props) {
@@ -36,6 +37,7 @@ class Page extends Component {
                         Search by name
                     </Button>
                 </ButtonToolbar>
+                <Body>
                 {this.props.recipes ? this.props.recipes.map(recipe => {
                     return <Card
                                 title={recipe.name}
@@ -44,6 +46,7 @@ class Page extends Component {
                                 recipeClicked={this.recipeClicked}
                             />
                 }) : null}
+                </Body>   
             </Container>
             {this.state.isCreating ? <RecipeForm exitCard={this.exitNewRecipe}/> : null}
             </div>

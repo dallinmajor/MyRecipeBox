@@ -34,6 +34,12 @@ body {
   justify-content: center;
 }
 
+.grid-1 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-column-gap: 4em;
+}
+
 .card-1 {
   padding: 0 20px 20px 20px;
   background-color: white;

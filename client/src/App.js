@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import NavigationBar from './containers/navigationBar';
-import Page from './containers/page';
+import Nav from './containers/nav';
+import head from './containers/head';
 
 
 export default class App extends Component {

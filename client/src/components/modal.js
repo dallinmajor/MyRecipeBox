@@ -1,7 +1,9 @@
-import react from 'react';
+import React from 'react';
 
 export default ({children}) => {
-    <article className='modal'>
+    return (
+        <article className='modal'>
         {children}
     </article>
+    )
 }

@@ -23,6 +23,14 @@ module.exports = {
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(402).json(err));
     },
+
+    findCategories: (req, res) => {
+        db.User
+            .findById(req.params.id)
+            .then(dbModel => res.json(dbModel))
+            .catch(err => res.status(402).json(err))
+    },
+    
     create: (req, res) => {
         db.User
             .create(req.body)

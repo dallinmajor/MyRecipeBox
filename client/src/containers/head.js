@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import { ButtonToolbar, Button } from 'react-bootstrap';
 import setRecipe from '../store/actions/recipeActions';
 import RecipeForm from '../containers/recipeForm';
+import CategoryDropdown from '../components/category-dropdown';
 
 class Head extends Component {
     constructor(props) {
@@ -11,6 +12,9 @@ class Head extends Component {
         this.state = {
             isCreating: false
         }
+    }
+    handleCategoryClick = (category) => {
+        console.log(category)
     }
     handleNewRecipeClick = () => {
         this.setState({ isCreating: true })
@@ -28,6 +32,10 @@ class Head extends Component {
         return (
             <header>
                 <ButtonToolbar>
+                    <CategoryDropdown
+                        categories={this.props.categories}
+                        handleCategoryClick={this.props.handleCategoryClick}
+                    />
                     <Button
                         onClick={this.handleNewRecipeClick}
                         bsStyle="primary"

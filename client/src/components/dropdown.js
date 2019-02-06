@@ -1,8 +1,9 @@
 import React from 'react';
 
-export default ({className, children}) => (
-    <div className='dropdown'>
-        <div className={`dropdown-content ${className}`}>
+export default ({name, className, children}) => (
+    <div className='my-dropdown'>
+        <div className={className}>{name}</div>
+        <div className={`my-dropdown-content`}>
             {children}
         </div>
     </div>

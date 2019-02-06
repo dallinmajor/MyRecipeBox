@@ -36,7 +36,7 @@ class Page extends Component {
                         New Recipe
                     </Button>
                     <Button bsSize="large" active>
-                        Search by name
+                        Category
                     </Button>
                 </ButtonToolbar>
                 <Body>
@@ -51,7 +51,7 @@ class Page extends Component {
                 </Body>   
             </Container>
             {this.state.isCreating ? <RecipeForm exitCard={this.exitNewRecipe}/> : null}
-            {this.state.recipeOnDisplay ? null : null}
+            
             </div>
             
         )

@@ -34,12 +34,6 @@ body {
   justify-content: center;
 }
 
-.grid-1 {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-column-gap: 4em;
-}
-
 .card-1 {
   padding: 0 20px 20px 20px;
   background-color: white;
@@ -55,6 +49,13 @@ body {
   margin-bottom: 25px;
 }
 
+.grid-1 {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-column-gap: 4em;
+}
+
+
 .card-title {
   text-align: center;
   font-size: 40px;
@@ -65,4 +66,20 @@ body {
   color: gray;
   margin-top: 10px;
   text-align: right;
+}
+
+@media only screen and (min-width: 600px) {
+  .grid-1 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr ;
+    grid-column-gap: 4em;
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  .grid-1 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr ;
+    grid-column-gap: 4em;
+  }
 }

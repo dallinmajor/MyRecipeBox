@@ -4,52 +4,41 @@ body {
   font-family: sans-serif;
 }
 
-.card {
-  width: 18rem;
+.exit-X {
+  float: right;
 }
 
-.border-1 {
-  margin-top: 100px;
-  padding: 50px;
-  border: 1.5px rgb(204, 204, 204) solid;
-  border-radius: 6px;
-}
-
-.overlay-1 {
-  position: fixed; /* Sit on top of the page content */
-  width: 100%; /* Full width (cover the whole page) */
-  height: 100%; /* Full height (cover the whole page) */
-  top: 0; 
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0,0,0,0.5); /* Black background with opacity */
-  z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
-  transition-timing-function: ease-in-out;
-  padding: 0;
-  margin: 0;
-  list-style: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.card-1 {
-  padding: 0 20px 20px 20px;
-  background-color: white;
-  border: 2px black solid;
-  width: 40%;
-  border-radius: 6px;
-}
-
-.card-head {
+.recipe-form {
   display: grid;
-  grid-template-columns: 10fr 1fr;
-  border-bottom: 2px gray solid;
-  margin-bottom: 25px;
+  grid-auto-rows: auto;
+  width: 250px;
 }
 
-.grid-1 {
+.my-modal-container {
+  position: fixed;
+  background-color: #fff;
+  border: 1px solid #000;
+  min-width: 100px;
+  left: 50%;
+  padding: 20px;
+  border-radius: 5px;
+  
+  -webkit-transform: translate(-50%, 0);
+  -ms-transform: translate(-50%, 0);
+  transform: translate(-50%, 0);
+}
+
+.my-modal::before {
+  content: "";
+  position: fixed;
+  background-color: rgba(0,0,0,.8);
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.grid {
   display: grid;
   grid-template-columns: 1fr;
   grid-column-gap: 4em;
@@ -68,18 +57,22 @@ body {
   text-align: right;
 }
 
+input, select, textarea {
+  margin: 10px;
+}
+
 @media only screen and (min-width: 600px) {
-  .grid-1 {
-    display: grid;
+  .grid {
     grid-template-columns: 1fr 1fr 1fr ;
-    grid-column-gap: 4em;
+  }
+
+  .recipe-form {
+    width: 400px;
   }
 }
 
 @media only screen and (min-width: 800px) {
-  .grid-1 {
-    display: grid;
+  .grid {
     grid-template-columns: 1fr 1fr 1fr 1fr ;
-    grid-column-gap: 4em;
   }
 }

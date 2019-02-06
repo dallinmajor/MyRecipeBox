@@ -1,9 +1,12 @@
 import React from 'react';
 
-export default ({children}) => {
+export default ({exit, children}) => {
     return (
-        <article className='modal'>
-        {children}
-    </article>
+        <div className='my-modal'>
+            <div className='my-modal-container'>
+                <div onClick={exit} className='exit-X'>X</div>
+                {children}
+            </div>
+        </div>
     )
 }

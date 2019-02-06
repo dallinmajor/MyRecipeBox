@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Nav, Navbar, NavDropdown, NavItem, MenuItem, FormGroup, FormControl } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
-class Nav extends Component {
+class MyNav extends Component {
     render() {
         return (
             <Navbar inverse collapseOnSelect>
@@ -29,4 +29,4 @@ const mapStateToProps = (state) => {
 };
 
 
-export default connect(mapStateToProps)(Nav);
+export default connect(mapStateToProps)(MyNav);

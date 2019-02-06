@@ -1,24 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {bindActionCreators} from 'redux';
-import { Container } from '../components/Grid';
+import { bindActionCreators } from 'redux';
 import Card from '../components/card';
-import Body from '../components/Wrappers/body';
 import setRecipe from '../store/actions/recipeActions';
 
-class Page extends Component {
-    constructor (props) {
+class Main extends Component {
+    constructor(props) {
         super(props);
         this.state = {
             isCreating: false
         }
     }
     handleNewRecipeClick = () => {
-        this.setState({isCreating: true})
+        this.setState({ isCreating: true })
     }
 
     exitNewRecipe = () => {
-        this.setState({isCreating: false})
+        this.setState({ isCreating: false })
     }
 
     recipeClicked = (recipe) => {
@@ -27,28 +25,23 @@ class Page extends Component {
 
     render() {
         return (
-            <div>
-                <Container>
-                <Body>
+            <main className='grid'>
                 {this.props.recipes ? this.props.recipes.map(recipe => {
                     return <Card
-                                title={recipe.name}
-                                description={recipe.description}
-                                recipe={[recipe.recipe]}
-                                recipeClicked={this.recipeClicked}
-                            />
+                        title={recipe.name}
+                        description={recipe.description}
+                        recipe={[recipe.recipe]}
+                        recipeClicked={this.recipeClicked}
+                    />
                 }) : null}
-                </Body>   
-            </Container>
-            </div>
-            
+            </main>
         )
-    }
+    };
 }
 
 const mapStateToProps = (state) => {
     return {
-        recipeOnDisplay: state.recipeOnDisplay
+        recipes: state.recipes
     }
 };
 
@@ -56,4 +49,4 @@ function mapDipsatchToProps(dispatch) {
     return bindActionCreators({ setRecipe }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDipsatchToProps)(Page);
+export default connect(mapStateToProps, mapDipsatchToProps)(Main);

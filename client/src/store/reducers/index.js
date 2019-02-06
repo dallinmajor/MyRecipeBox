@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import userRecipes from './user_reducer';
+import userRecipes from './recipes_reducer';
 import userCategories from './categories_reducer';
 import userReducer from './user_reducer';
 

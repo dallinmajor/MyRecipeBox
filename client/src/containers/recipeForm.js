@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
-import { Input, TextArea, FormBtn, SelectInput } from "../components/Form";
 import { connect } from 'react-redux';
 import HTMLeditor from './HTMLeditor';
-import Card_1 from '../components/Wrappers/card_1';
-import OverLay from '../components/Overlays/overlay';
-// import { setUser } from '../store/actions';
-// import { bindActionCreators } from 'redux';
-
+import Modal from '../components/modal';
 
 class RecipeForm extends Component {
     constructor(props) {
@@ -48,36 +43,39 @@ class RecipeForm extends Component {
 
     render() {
         return this.props.categories ? (
-            <OverLay>
-                <Card_1 cardTitle='New Recipe' xClicked={this.props.exitCard}>
-                    <form>
-                        <Input
-                            value={this.state.recipeName}
-                            name="recipeName"
-                            placeholder="Recipe Name"
-                            onChange={this.handleInputChange}
-                        />
-                        <SelectInput
-                            value={this.state.category}
-                            name="category"
-                            label="Category"
-                            onChange={this.handleInputChange}
-                            options={this.props.categories}
-                        />
-                        <TextArea
-                            value={this.state.description}
-                            name='description'
-                            onChange={this.handleInputChange}
-                            placeholder='Description (optional)'
-                            rows="3"
-                        />
-                        <HTMLeditor
-                            onEditChange={this.handleHTMLeditChange}
-                        />
-                    </form>
-                    <FormBtn onClick={this.handleSubmit}>Submit</FormBtn>
-                </Card_1>
-            </OverLay>
+            <div>
+            <Modal exit={this.props.exitCard}>
+                <form className='recipe-form'>
+                    <input value={this.state.recipeName}
+                        name="recipeName"
+                        placeholder="Recipe Name"
+                        onChange={this.handleInputChange}
+                    />
+                    <select
+                        value={this.state.category}
+                        name="category"
+                        label="Category"
+                        onChange={this.handleInputChange}
+                        options={this.props.categories}
+                    >
+                        {this.props.categories.map(category => (
+                            <option>{category}</option>
+                        ))}
+                    </select>
+                    <textarea
+                        value={this.state.description}
+                        name='description'
+                        onChange={this.handleInputChange}
+                        placeholder='Description (optional)'
+                        rows="3"
+                    />
+                    <HTMLeditor
+                        onEditChange={this.handleHTMLeditChange}
+                    />
+                    <button onClick={this.handleSubmit}>Add</button>
+                </form>
+            </Modal>
+            </div>
         ) : null;
     }
 }

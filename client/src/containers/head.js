@@ -1,24 +1,23 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {bindActionCreators} from 'redux';
+import { bindActionCreators } from 'redux';
 import { ButtonToolbar, Button } from 'react-bootstrap';
-import { Container } from '../components/Grid';
-import RecipeForm from '../containers/recipeForm';
 import setRecipe from '../store/actions/recipeActions';
+import RecipeForm from '../containers/recipeForm';
 
 class Head extends Component {
-    constructor (props) {
+    constructor(props) {
         super(props);
         this.state = {
             isCreating: false
         }
     }
     handleNewRecipeClick = () => {
-        this.setState({isCreating: true})
+        this.setState({ isCreating: true })
     }
 
     exitNewRecipe = () => {
-        this.setState({isCreating: false})
+        this.setState({ isCreating: false })
     }
 
     recipeClicked = (recipe) => {
@@ -28,14 +27,15 @@ class Head extends Component {
     render() {
         return (
             <header>
-                <Button onClick={this.handleNewRecipeClick} bsStyle="primary" bsSize="large" active>
-                        New Recipe
-                 </Button>
                 <ButtonToolbar>
-                    <Button bsSize="large" active>
-                        Category
+                    <Button
+                        onClick={this.handleNewRecipeClick}
+                        bsStyle="primary"
+                        bsSize="large" active
+                    >New Recipe
                     </Button>
                 </ButtonToolbar>
+                {this.state.isCreating ? <RecipeForm exitCard={this.exitNewRecipe} /> : null}
             </header>
         )
     }
@@ -45,6 +45,7 @@ const mapStateToProps = (state) => {
     return {
         categories: state.categories,
         recipes: state.recipes,
+        recipeOnDisplay: state.recipeOnDisplay
     }
 };
 

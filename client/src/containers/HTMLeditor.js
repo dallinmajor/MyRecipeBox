@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import {TextArea} from '../components/Form';
 
 class HTMLeditor extends Component {
     constructor(props) {
@@ -22,7 +21,7 @@ class HTMLeditor extends Component {
     }
     render() {
         return (
-            <TextArea
+            <textarea
                 value={this.state.inputVal}
                 onChange={this.handleOnChange}
                 rows='10'

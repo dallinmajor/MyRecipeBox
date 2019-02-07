@@ -5,6 +5,7 @@ import Main from './containers/main';
 import Foot from './components/foot';
 import API from './utils/API';
 import { connect } from 'react-redux';
+import {bindActionCreators} from 'redux';
 import setRecipe from './store/actions/set_recipe_action';
 import setUser from './store/actions/set_user_action';
 

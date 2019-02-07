@@ -10,6 +10,10 @@ module.exports = {
     Validate: (req, res) => {
         db.User
             .find({ username: req.params.username, password: req.params.password})
+            .populate({
+                path: 'recipes',
+                model: 'Recipe'
+            })
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(402).json(err));
     },
@@ -17,7 +21,7 @@ module.exports = {
         db.User
             .findById(req.params.id)
             .populate({
-                path: 'redipes',
+                path: 'recipes',
                 model: 'Recipe'
             })
             .then(dbModel => res.json(dbModel))

@@ -1,20 +1,16 @@
 import axios from 'axios';
 
-module.exports = {
-    create: function (userData) {
-        return axios.post("/api/recipe", userData)
+export default {
+    create: function (id, category) {
+        return axios.post("/api/category/" + id, {category})
             .catch(err => console.log(err));
     },
-    get: function (id) {
-        return axios.get("/api/recipe/" + id)
+    getAll: function (id) {
+        return axios.get("/api/category/" + id)
             .catch(err => console.log(err));
     },
-    update: function (id, updateData) {
-        return axios.put("/api/recipe/" + id, updateData)
-            .catch(err => console.log(err));
-    },
-    delete: function (id, userId) {
-        return axios.delete(`/api/recipe/${id}/${userId}`)
+    delete: function (id) {
+        return axios.delete(`/api/category/${id}/delete`)
             .catch(err => console.log(err));
     }
 }

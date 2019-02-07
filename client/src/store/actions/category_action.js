@@ -1,12 +1,9 @@
-import axios from 'axios';
+export const SET_CATEGORIES = 'set_categories';
 
-export const FETCH_CATEGORIES = 'fetch_categories';
-
-export function fetchPosts() {
+export function setCategories(arr) {
     
-
     return {
-        type: FETCH_CATEGORIES,
-        payload: request
+        type: SET_CATEGORIES,
+        payload: arr
     };
 };

@@ -1,11 +1,11 @@
 import axios from 'axios';
 
-module.exports = {
+export default {
     create: function (userData) {
         return axios.post("/api/user", userData)
             .catch(err => console.log(err));
     },
-    validate: function (username) {
+    validate: function (username, password) {
         return axios.get(`/api/user/validate/${username}/${password}`)
             .catch(err => console.log(err));
     },

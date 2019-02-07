@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-module.exports = {
-    create: function (userData) {
-        return axios.post("/api/recipe", userData)
+export default {
+    create: function (userId, recipe) {
+        return axios.post("/api/recipe/" + userId, recipe)
             .catch(err => console.log(err));
     },
     get: function (id) {
@@ -14,7 +14,7 @@ module.exports = {
             .catch(err => console.log(err));
     },
     delete: function (id, userId) {
-        return axios.delete(`/api/recipe/${id}/${userId}`)
+        return axios.delete(`/api/recipe/delete/${id}/${userId}`)
             .catch(err => console.log(err));
     }
 }

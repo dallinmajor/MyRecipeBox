@@ -1,14 +1,9 @@
-export default function setRecipe(recipe) {
-    console.log(recipe);
+export const SET_RECIPES = 'SET_RECIPES';
 
-    if(recipe) {
-        return {
-            type: 'SET_RECIPE',
-            payload: recipe
-        }
-    } else {
-        return {
-            type: 'NO_RESULTS'
-        }
+export default function setRecipe(recipes) {
+    
+    return {
+        type: SET_RECIPES,
+        payload: recipes
     }
-}
+} 

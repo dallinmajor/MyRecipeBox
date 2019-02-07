@@ -34,7 +34,7 @@ class Head extends Component {
                 <ButtonToolbar>
                     <CategoryDropdown
                         categories={this.props.categories}
-                        handleCategoryClick={this.props.handleCategoryClick}
+                        handleCategoryClick={this.handleCategoryClick}
                     />
                     <Button
                         onClick={this.handleNewRecipeClick}
@@ -53,7 +53,6 @@ const mapStateToProps = (state) => {
     return {
         categories: state.categories,
         recipes: state.recipes,
-        recipeOnDisplay: state.recipeOnDisplay
     }
 };
 

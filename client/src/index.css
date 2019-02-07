@@ -60,7 +60,14 @@ body {
 
 .my-dropdown:hover .my-dropdown-content {
   display: block;
-  text-align: center;
+}
+
+.dropdown-item {
+  display: block;
+}
+
+.dropdown-item:hover {
+  color: red;
 }
 
 .card-title {

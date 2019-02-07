@@ -4,8 +4,10 @@ import Head from './containers/head';
 import Main from './containers/main';
 import Foot from './components/foot';
 import API from './utils/API';
+import { connect } from 'react-redux';
+import setRecipe from './store/actions/set_recipe_action';
 
-export default class App extends Component {
+class App extends Component {
 
   componentWillMount() {
     this.getUser();
@@ -13,13 +15,17 @@ export default class App extends Component {
 
   getUser() {
     API
-      .Recipes.create('5bfb2880ea906da73e1ea279', {
-        name: 'Turkey Bacon Club',
-        description: 'This is my fav sandwhich',
-        category: 'poop',
-        recipe: 'take a thing and put it in a thing',
-        user: '5bfb2880ea906da73e1ea279'
-      }).then(res => console.log(res));
+      .User
+      .validate('dallinmajor', 'Pin4Dallin')
+      .then(res => {
+        const test = {};
+
+        test[res.data[0].recipes[0]["_id"]] = res.data[0].recipes[0];
+
+        console.log(test);
+
+        this.props.setRecipe(res.data[0].recipes)
+      });
   }
 
   render() {
@@ -35,3 +41,5 @@ export default class App extends Component {
     )
   }
 };
+
+export default connect(null, { setRecipe })(App); 

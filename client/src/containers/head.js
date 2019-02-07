@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ButtonToolbar, Button } from 'react-bootstrap';
-import setRecipe from '../store/actions/recipeActions';
+import setRecipe from '../store/actions/set_recipe_action';
 import RecipeForm from '../containers/recipeForm';
 import CategoryDropdown from '../components/category-dropdown';
 

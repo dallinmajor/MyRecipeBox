@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Card from '../components/card';
-import setRecipe from '../store/actions/recipeActions';
-
+import setRecipe from '../store/actions/set_recipe_action';
+import _ from 'lodash';
 class Main extends Component {
     constructor(props) {
         super(props);
@@ -23,17 +23,22 @@ class Main extends Component {
         console.log(recipe);
     }
 
+    renderRecipes = (recipes) => {
+        return _.map(recipes, recipe => {
+            return <Card
+                key={recipe._id}
+                title={recipe.name}
+                description={recipe.description}
+                recipe={[recipe.recipe]}
+                recipeClicked={this.recipeClicked}
+            />
+        } )
+    }
+
     render() {
         return (
             <main className='grid'>
-                {this.props.recipes ? this.props.recipes.map(recipe => {
-                    return <Card
-                        title={recipe.name}
-                        description={recipe.description}
-                        recipe={[recipe.recipe]}
-                        recipeClicked={this.recipeClicked}
-                    />
-                }) : null}
+                {this.props.recipes ? this.renderRecipes(this.props.recipes): null}
             </main>
         )
     };

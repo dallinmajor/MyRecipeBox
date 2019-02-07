@@ -9,9 +9,11 @@ export default function(state = {}, action) {
         case SET_RECIPES:
             return _.mapKeys(action.payload, '_id')
         case ADD_RECIPE:
-            const newArr = state;
-            newArr[action.payload._id] = action.payload;
-            return newArr;
+            let newList = Object.assign({}, state);
+
+            newList[action.payload._id] = action.payload;
+            
+            return newList;
         default:
             return state;
     }

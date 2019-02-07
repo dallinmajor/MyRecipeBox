@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Card from '../components/card';
-import setRecipe from '../store/actions/set_recipe_action';
+import setRecipeDisplay from '../store/actions/set_display_recipe_action';
 import _ from 'lodash';
 class Main extends Component {
     constructor(props) {
@@ -19,10 +19,6 @@ class Main extends Component {
         this.setState({ isCreating: false })
     }
 
-    recipeClicked = (recipe) => {
-        console.log(recipe);
-    }
-
     renderRecipes = (recipes) => {
         return _.map(recipes, recipe => {
             return <Card
@@ -30,7 +26,7 @@ class Main extends Component {
                 title={recipe.name}
                 description={recipe.description}
                 recipe={[recipe.recipe]}
-                recipeClicked={this.recipeClicked}
+                recipeClicked={this.props.setRecipeDisplay}
             />
         } )
     }
@@ -51,7 +47,9 @@ const mapStateToProps = (state) => {
 };
 
 function mapDipsatchToProps(dispatch) {
-    return bindActionCreators({ setRecipe }, dispatch);
+    return bindActionCreators({ 
+        setRecipeDisplay: setRecipeDisplay
+     }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDipsatchToProps)(Main);

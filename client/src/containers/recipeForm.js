@@ -43,7 +43,7 @@ class RecipeForm extends Component {
         API
             .Recipes
             .create(this.props.user.id, newRecipeObj)
-            .then(res => console.log(res));
+            .then(res => this.props.addRecipe(res.data));
 
         this.props.exitCard();
     }

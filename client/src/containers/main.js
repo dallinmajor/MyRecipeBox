@@ -49,7 +49,7 @@ class Main extends Component {
     render() {
         return (
             <div>
-                <Head/>
+                <Head handleRecipeFilter={this.handleRecipeFilter}/>
                 <main className='grid main'>
                     {this.props.recipes ? this.renderRecipes(this.props.recipes) : null}
                 </main>

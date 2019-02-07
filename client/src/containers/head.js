@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { ButtonToolbar, Button } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import setRecipe from '../store/actions/set_recipe_action';
 import RecipeForm from '../containers/recipeForm';
 import CategoryDropdown from '../components/category-dropdown';
@@ -16,11 +16,11 @@ class Head extends Component {
     }
     
     handleNewRecipeClick = () => {
-        this.setState({ isCreating: true })
+        this.setState({ isCreatingRecipe: true })
     }
 
     handleNewCategoryClick = () => {
-        this.setState({isCreating: true})
+        this.setState({isAddingCategory: true})
     }
 
     exit = () => {
@@ -37,7 +37,7 @@ class Head extends Component {
             <header className='main-header'>
                 <CategoryDropdown
                     categories={this.props.categories}
-                    handleCategoryClick={this.handleCategoryClick}
+                    handleCategoryClick={this.props.handleRecipeFilter}
                     handleNewCategoryClick={this.handleNewCategoryClick}
                 />
                 <Button

@@ -79,7 +79,7 @@ class RecipeForm extends Component {
                     <HTMLeditor
                         onEditChange={this.handleHTMLeditChange}
                     />
-                    <button className='recipe-submit' onClick={this.handleSubmit}>Add Recipe</button>
+                    <button className='form-btn' onClick={this.handleSubmit}>Add Recipe</button>
                 </form>
             </Modal>
             </div>

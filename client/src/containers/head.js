@@ -5,6 +5,7 @@ import { Button } from 'react-bootstrap';
 import setRecipe from '../store/actions/set_recipe_action';
 import RecipeForm from '../containers/recipeForm';
 import CategoryDropdown from '../components/category-dropdown';
+import CategoryForm  from './categoryForm';
 
 class Head extends Component {
     constructor(props) {
@@ -50,6 +51,7 @@ class Head extends Component {
                     
 
                 {this.state.isCreatingRecipe ? <RecipeForm exitCard={this.exit} /> : null}
+                {this.state.isAddingCategory ? <CategoryForm exitCard={this.exit}/> : null}
             </header>
         )
     }

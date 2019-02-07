@@ -10,40 +10,46 @@ class Head extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isCreating: false
+            isCreatingRecipe: false,
+            isAddingCategory: false,
         }
     }
-    handleCategoryClick = (category) => {
-        console.log(category)
-    }
+    
     handleNewRecipeClick = () => {
         this.setState({ isCreating: true })
     }
 
-    exitNewRecipe = () => {
-        this.setState({ isCreating: false })
+    handleNewCategoryClick = () => {
+        this.setState({isCreating: true})
     }
 
-    recipeClicked = (recipe) => {
-        console.log(recipe);
+    exit = () => {
+        this.setState({ 
+            isCreatingRecipe: false,
+            isAddingCategory: false
+        })
     }
+
+    
 
     render() {
         return (
-            <header>
-                <ButtonToolbar>
-                    <CategoryDropdown
-                        categories={this.props.categories}
-                        handleCategoryClick={this.handleCategoryClick}
-                    />
-                    <Button
-                        onClick={this.handleNewRecipeClick}
-                        bsStyle="primary"
-                        bsSize="large" active
-                    >New Recipe
-                    </Button>
-                </ButtonToolbar>
-                {this.state.isCreating ? <RecipeForm exitCard={this.exitNewRecipe} /> : null}
+            <header className='main-header'>
+                <CategoryDropdown
+                    categories={this.props.categories}
+                    handleCategoryClick={this.handleCategoryClick}
+                    handleNewCategoryClick={this.handleNewCategoryClick}
+                />
+                <Button
+                    onClick={this.handleNewRecipeClick}
+                    bsStyle="primary"
+                    bsSize="large" active
+                >
+                New Recipe
+                </Button>
+                    
+
+                {this.state.isCreatingRecipe ? <RecipeForm exitCard={this.exit} /> : null}
             </header>
         )
     }

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import MyNav from './containers/nav';
-import Head from './containers/head';
 import Main from './containers/main';
 import Foot from './components/foot';
 import API from './utils/API';
@@ -9,6 +8,7 @@ import {bindActionCreators} from 'redux';
 import setRecipe from './store/actions/set_recipe_action';
 import setUser from './store/actions/set_user_action';
 import setCategories from './store/actions/set_categories_action';
+import DisplayRecipe from './containers/display';
 
 class App extends Component {
 
@@ -38,7 +38,7 @@ class App extends Component {
       <div>
         <MyNav/>
         <div className='container'>
-          <Head/>
+          <DisplayRecipe/>
           <Main/>
         </div>
         <Foot/>

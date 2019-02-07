@@ -40,7 +40,11 @@ class RecipeForm extends Component {
             user: "Dallin Major"
         }
         
-        //add API call
+        API
+            .Recipes
+            .create(this.props.user.id, newRecipeObj)
+            .then(res => console.log(res));
+
         this.props.exitCard();
     }
 
@@ -85,7 +89,8 @@ class RecipeForm extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        categories: state.categories
+        categories: state.categories,
+        user: state.user
     }
 }
 

@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
 import setRecipe from './store/actions/set_recipe_action';
 import setUser from './store/actions/set_user_action';
+import setCategories from './store/actions/set_categories_action';
 
 class App extends Component {
 
@@ -28,6 +29,7 @@ class App extends Component {
 
         this.props.setUser(userProp);
         this.props.setRecipe(user.recipes);
+        this.props.setCategories(user.categories)
       });
   }
 
@@ -48,7 +50,8 @@ class App extends Component {
 function mapDipsatchToProps(dispatch) {
   return bindActionCreators({ 
     setRecipe: setRecipe,
-    setUser: setUser
+    setUser: setUser,
+    setCategories: setCategories
    }, dispatch);
 }
 

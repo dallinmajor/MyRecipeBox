@@ -17,7 +17,7 @@ class HTMLeditor extends Component {
         this.setState({
             inputVal: input,
         });
-        this.props.onEditChange(('<p>' + input.replace(/(?:\r\n|\r|\n)/g, '<br/>') + '</p>'))
+        this.props.onEditChange((input.replace(/(?:\r\n|\r|\n)/g, '<br/>')))
     }
     render() {
         return (

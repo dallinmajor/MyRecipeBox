@@ -6,25 +6,27 @@ import Foot from './components/foot';
 import API from './utils/API';
 import { connect } from 'react-redux';
 import setRecipe from './store/actions/set_recipe_action';
+import setUser from './store/actions/set_user_action';
 
 class App extends Component {
 
   componentWillMount() {
-    this.getUser();
+    this.setRedux();
   }
 
-  getUser() {
+  setRedux() {
     API
       .User
       .validate('dallinmajor', 'Pin4Dallin')
       .then(res => {
-        const test = {};
+        const user = res.data[0]
+        const userProp = {
+          username: user.username,
+          id: user._id
+        };
 
-        test[res.data[0].recipes[0]["_id"]] = res.data[0].recipes[0];
-
-        console.log(test);
-
-        this.props.setRecipe(res.data[0].recipes)
+        this.props.setUser(userProp);
+        this.props.setRecipe(user.recipes);
       });
   }
 
@@ -42,4 +44,11 @@ class App extends Component {
   }
 };
 
-export default connect(null, { setRecipe })(App); 
+function mapDipsatchToProps(dispatch) {
+  return bindActionCreators({ 
+    setRecipe: setRecipe,
+    setUser: setUser
+   }, dispatch);
+}
+
+export default connect(null, mapDipsatchToProps)(App); 

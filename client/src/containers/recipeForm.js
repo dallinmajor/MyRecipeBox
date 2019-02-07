@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import HTMLeditor from './HTMLeditor';
 import Modal from '../components/modal';
+import addRecipe from '../store/actions/add_recipe_action';
+import API from '../utils/API';
 
 class RecipeForm extends Component {
     constructor(props) {
@@ -37,7 +39,8 @@ class RecipeForm extends Component {
             category: this.state.category,
             user: "Dallin Major"
         }
-        console.log(newRecipeObj);
+        
+        //add API call
         this.props.exitCard();
     }
 
@@ -86,9 +89,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-// const mapDispatchToProps = (dispatch) => {
-
-//     return bindActionCreators({ setUser: setUser }, dispatch);
-// }
-
-export default connect(mapStateToProps)(RecipeForm);
+export default connect(mapStateToProps, { addRecipe })(RecipeForm);

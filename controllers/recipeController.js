@@ -21,7 +21,14 @@ module.exports = {
                 .findByIdAndUpdate(req.params.id, {
                     $push: { recipes: recipe._id}
                 })
-                .then(recipe => res.json(recipe));
+                .then(result => {
+                    if(result) {
+                        res.json(recipe)
+                    } else {
+                        res.send(false)
+                    }
+                })
+                .catch(err => console.log(err))
             })
             .catch(err => res.status(402).json(err));
     },

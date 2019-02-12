@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
-import { Input, TextArea, FormBtn, SelectInput } from "../components/Form";
 import { connect } from 'react-redux';
 import HTMLeditor from './HTMLeditor';
-import Card_1 from '../components/Wrappers/card_1';
-import OverLay from '../components/Overlays/overlay';
-// import { setUser } from '../store/actions';
-// import { bindActionCreators } from 'redux';
-
+import Modal from '../components/modal';
+import addRecipe from '../store/actions/add_recipe_action';
+import API from '../utils/API';
 
 class RecipeForm extends Component {
     constructor(props) {
@@ -42,55 +39,59 @@ class RecipeForm extends Component {
             category: this.state.category,
             user: "Dallin Major"
         }
-        console.log(newRecipeObj);
+        
+        API
+            .Recipes
+            .create(this.props.user.id, newRecipeObj)
+            .then(res => this.props.addRecipe(res.data));
+
         this.props.exitCard();
     }
 
     render() {
         return this.props.categories ? (
-            <OverLay>
-                <Card_1 cardTitle='New Recipe' xClicked={this.props.exitCard}>
-                    <form>
-                        <Input
-                            value={this.state.recipeName}
-                            name="recipeName"
-                            placeholder="Recipe Name"
-                            onChange={this.handleInputChange}
-                        />
-                        <SelectInput
-                            value={this.state.category}
-                            name="category"
-                            label="Category"
-                            onChange={this.handleInputChange}
-                            options={this.props.categories}
-                        />
-                        <TextArea
-                            value={this.state.description}
-                            name='description'
-                            onChange={this.handleInputChange}
-                            placeholder='Description (optional)'
-                            rows="3"
-                        />
-                        <HTMLeditor
-                            onEditChange={this.handleHTMLeditChange}
-                        />
-                    </form>
-                    <FormBtn onClick={this.handleSubmit}>Submit</FormBtn>
-                </Card_1>
-            </OverLay>
+            <div>
+            <Modal exit={this.props.exitCard}>
+                <form className='recipe-form'>
+                    <input value={this.state.recipeName}
+                        name="recipeName"
+                        placeholder="Recipe Name"
+                        onChange={this.handleInputChange}
+                    />
+                    <select
+                        value={this.state.category}
+                        name="category"
+                        label="Category"
+                        onChange={this.handleInputChange}
+                        options={this.props.categories}
+                    >
+                        {this.props.categories.map(category => (
+                            <option>{category}</option>
+                        ))}
+                    </select>
+                    <textarea
+                        value={this.state.description}
+                        name='description'
+                        onChange={this.handleInputChange}
+                        placeholder='Description (optional)'
+                        rows="3"
+                    />
+                    <HTMLeditor
+                        onEditChange={this.handleHTMLeditChange}
+                    />
+                    <button className='form-btn' onClick={this.handleSubmit}>Add Recipe</button>
+                </form>
+            </Modal>
+            </div>
         ) : null;
     }
 }
 
 const mapStateToProps = (state) => {
     return {
-        categories: state.categories
+        categories: state.categories,
+        user: state.user
     }
 }
 
-// const mapDispatchToProps = (dispatch) => {
-
-//     return bindActionCreators({ setUser: setUser }, dispatch);
-// }
-
-export default connect(mapStateToProps)(RecipeForm);
+export default connect(mapStateToProps, { addRecipe })(RecipeForm);

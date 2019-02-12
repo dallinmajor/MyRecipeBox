@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import {TextArea} from '../components/Form';
 
 class HTMLeditor extends Component {
     constructor(props) {
@@ -18,11 +17,11 @@ class HTMLeditor extends Component {
         this.setState({
             inputVal: input,
         });
-        this.props.onEditChange(('<p>' + input.replace(/(?:\r\n|\r|\n)/g, '<br/>') + '</p>'))
+        this.props.onEditChange((input.replace(/(?:\r\n|\r|\n)/g, '<br/>')))
     }
     render() {
         return (
-            <TextArea
+            <textarea
                 value={this.state.inputVal}
                 onChange={this.handleOnChange}
                 rows='10'

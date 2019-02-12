@@ -1,11 +1,10 @@
-export default (state = null, action) => {
+import { SET_USER } from '../actions/set_user_action';
 
-    console.log(state);
+export default (state = {}, action) => {
+
     switch (action.type) {
-        case 'SET_USER':
+        case SET_USER:
             return action.payload
-            // eslint-disable-next-line
-            break;
         default:
             return state
     }

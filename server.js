@@ -28,12 +28,6 @@ if (cluster.isMaster) {
   //   process.env.MONGODB_URI || db,
   //   { useNewUrlParser: true }
   // );
-  
-
-  // mongoose.connect(
-  //   process.env.MONGODB_URI || db,
-  //   { useNewUrlParser: true }
-  // );
 
   mongoose.connect(
     process.env.MONGODB_URI,

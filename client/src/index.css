@@ -50,8 +50,16 @@ h2 {
   float: right;
 }
 
+.edit-dropdown-content:hover {
+
+}
+
 .edit {
-  float: left;
+  width: 50px;
+}
+
+.edit:hover {
+  cursor: pointer;
 }
 
 .exit-X:hover {
@@ -121,6 +129,9 @@ h6.card-title {
 
 .my-dropdown {
   position: relative;
+}
+
+.category-dropdown {
   display: inline-block;
   padding: 10px 20px;
   font-size: 18px;
@@ -165,6 +176,12 @@ h6.card-title {
 .card-title {
   text-align: center;
   font-size: 40px;
+}
+
+.card-body {
+  overflow: scroll;
+  height: 180px;
+  margin-bottom: 10px;
 }
 
 .card-exit {

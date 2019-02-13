@@ -7,8 +7,8 @@ const Card = ({title, description, recipe, recipeClicked}) => (
             <div className="card-body">
                 <h6 className="card-title">{title}</h6>
                 <p className="card-text">{description}</p>
-                <a href="#" className="btn btn-primary" onClick={(e) =>  {e.preventDefault(); recipeClicked(recipe[0])}}>See Recipe</a>
             </div>
+            <a href="#" className="btn btn-primary" onClick={(e) =>  {e.preventDefault(); recipeClicked(recipe[0])}}>See Recipe</a>
         </div>
     </div>
 );

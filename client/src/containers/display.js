@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Modal from '../components/modal';
 import setRecipeDisplay from '../store/actions/set_display_recipe_action';
+import EditDropDown from './editDropDown';
 
 class DisplayRecipe extends Component {
 
@@ -20,6 +21,7 @@ class DisplayRecipe extends Component {
         return this.props.displayRecipe ? (
             <div>
                 <Modal exit={this.props.setRecipeDisplay}>
+                    <EditDropDown/>
                     <div className='recipe-card'>
                         <h2 className='center'>{recipe.name}</h2>
                         <h4>{recipe.description}</h4>

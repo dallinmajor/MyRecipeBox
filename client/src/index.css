@@ -50,6 +50,10 @@ h2 {
   float: right;
 }
 
+.edit {
+  float: left;
+}
+
 .exit-X:hover {
   cursor: pointer;
 }

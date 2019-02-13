@@ -20,6 +20,7 @@ class DisplayRecipe extends Component {
         return this.props.displayRecipe ? (
             <div>
                 <Modal exit={this.props.setRecipeDisplay}>
+                    <a>edit</a>
                     <div className='recipe-card'>
                         <h2 className='center'>{recipe.name}</h2>
                         <h4>{recipe.description}</h4>

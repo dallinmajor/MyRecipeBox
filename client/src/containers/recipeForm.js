@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import HTMLeditor from './HTMLeditor';
 import Modal from '../components/modal';
 import addRecipe from '../store/actions/add_recipe_action';
+import _ from 'lodash';
 import API from '../utils/API';
 
 class RecipeForm extends Component {
@@ -64,8 +65,8 @@ class RecipeForm extends Component {
                         label="Category"
                         onChange={this.handleInputChange}
                         options={this.props.categories}
-                    >
-                        {this.props.categories.map(category => (
+                    >   <option>Categories</option>
+                        {_.map(this.props.categories, category => (
                             <option>{category}</option>
                         ))}
                     </select>

@@ -6,16 +6,16 @@ export default ({arr, handleCategoryClick, handleNewCategoryClick, handleCategor
     const categories = arr[0];
     return (
         <DropDown className='category-dropdown' name='Categories'>
-            <p className='dropdown-item' onClick={(e) => {e.preventDefault(); handleCategoryClick(false)}}>None</p>
+            <p className='other-items' onClick={(e) => {e.preventDefault(); handleCategoryClick(false)}}>None</p>
             { _.map(categories, category => {
                return (
-                <span>
-                    <p className='exit-X'>x</p>
-                    <p onClick={(e) => {e.preventDefault(); handleCategoryClick(category)}} className='dropdown-item'>{category}</p>
+                <span className='dropdown-item' onClick={(e) => {handleCategoryClick(category)}}>
+                    <p className='exit-X' onClick={() => handleCategoryDelete(category)}>x</p>
+                    <p>{category}</p>
                 </span>
                ) 
             })}
-            <p className='dropdown-item' onClick={(handleNewCategoryClick)}>--New Category--</p>
+            <p className='other-items' onClick={() => handleNewCategoryClick()}>--New Category--</p>
         </DropDown>
     )
 }

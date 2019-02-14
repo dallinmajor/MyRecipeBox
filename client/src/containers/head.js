@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Button } from 'react-bootstrap';
 import setRecipe from '../store/actions/set_recipe_action';
+import deleteCategory from '../store/actions/delete_category_action';
 import RecipeForm from '../containers/recipeForm';
 import CategoryDropdown from '../components/category-dropdown';
 import CategoryForm  from './categoryForm';
@@ -37,9 +38,10 @@ class Head extends Component {
         return (
             <header className='main-header'>
                 <CategoryDropdown
-                    categories={this.props.categories}
+                    arr={[this.props.categories]}
                     handleCategoryClick={this.props.handleRecipeFilter}
                     handleNewCategoryClick={this.handleNewCategoryClick}
+                    handleCategoryDelete={this.props.deleteCategory}
                 />
                 <Button
                     onClick={this.handleNewRecipeClick}
@@ -65,7 +67,12 @@ const mapStateToProps = (state) => {
 };
 
 function mapDipsatchToProps(dispatch) {
-    return bindActionCreators({ setRecipe }, dispatch);
+    return bindActionCreators(
+        { 
+            setRecipe: setRecipe,
+            deleteCategory: deleteCategory
+
+        }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDipsatchToProps)(Head);

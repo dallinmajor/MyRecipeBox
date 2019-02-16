@@ -8,6 +8,10 @@ class HTMLeditor extends Component {
         }
     }
 
+    componentDidMount() {
+        console.log(this.props.string, "is this here?")
+    }
+
     sanatizeInput = (input) => {
         return input.replace(/<.*?script|style=|class=/g, '');
     }

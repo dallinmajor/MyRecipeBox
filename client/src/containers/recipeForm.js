@@ -10,11 +10,43 @@ class RecipeForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            set: false,
+            edit: false,
             recipeName: '',
             category: '',
             description: '',
             recipe: '',
+            id: ''
         }
+    }
+
+    componentDidMount() {
+        this.props.recipe ? this.setEditInfo(this.props.recipe[0]) : this.setUp();
+    }
+
+    setUp() {
+        this.setState({set: true})
+    }
+
+    replaceHtmltags(input) {
+        return input.replace(/(<br*?>)/g, '\n');
+    }
+
+    setEditInfo = (input) => {
+        const { name, recipe, description, category, _id} = input;
+
+        const cleansedRecipe= this.replaceHtmltags(recipe);
+        console.log(cleansedRecipe, 'did this work?')
+
+        this.setState({
+            set: true,
+            edit: true,
+            recipeName: name,
+            category: category,
+            description: description,
+            recipe: cleansedRecipe,
+            id: _id
+        })
     }
 
     handleInputChange = event => {
@@ -22,7 +54,6 @@ class RecipeForm extends Component {
         this.setState({
             [name]: value
         });
-        console.log(event);
     };
 
     handleHTMLeditChange = (edit) => {
@@ -30,27 +61,42 @@ class RecipeForm extends Component {
             recipe: edit
         })
     }
-    handleSubmit = (e) => {
-        e.preventDefault();
 
-        const newRecipeObj = {
+    createRecipeObject() {
+        return {
             recipe: this.state.recipe,
             name: this.state.recipeName,
             description: this.state.description,
             category: this.state.category,
-            user: "Dallin Major"
+            user: this.props.user.id
         }
-        
+    }
+
+    handleEditRecipe = (e) => {
+        e.preventDefault();
+
+        const editedRecipe = this.createRecipeObject();
+
         API
             .Recipes
-            .create(this.props.user.id, newRecipeObj)
+            .update(this.state.id, editedRecipe)
+            .then(res => console.log(res))
+    }
+
+
+    handleAddRecipe = (e) => {
+        e.preventDefault();
+
+        API
+            .Recipes
+            .create(this.props.user.id, this.createRecipeObject())
             .then(res => this.props.addRecipe(res.data));
 
         this.props.exitCard();
     }
 
     render() {
-        return this.props.categories ? (
+        return this.state.set ? (
             <div>
             <Modal exit={this.props.exitCard}>
                 <form className='recipe-form'>
@@ -78,9 +124,13 @@ class RecipeForm extends Component {
                         rows="3"
                     />
                     <HTMLeditor
+                        string={this.state.recipe}
                         onEditChange={this.handleHTMLeditChange}
                     />
-                    <button className='form-btn' onClick={this.handleSubmit}>Add Recipe</button>
+                    {!this.state.edit ? (<button className='form-btn' onClick={this.handleAddRecipe}>Add Recipe</button>) : (
+                        <button className='form-btn' onClick={this.handleEditRecipe}>Edit Recipe</button>
+                    )}
+                    
                 </form>
             </Modal>
             </div>

@@ -15,7 +15,6 @@ class EditDropDown extends Component {
     }
 
     deleteRecipe() {
-        console.log(this.props.id);
         this.props.deleteRecipe(this.props.id);
         this.props.exit();
     }
@@ -29,7 +28,7 @@ class EditDropDown extends Component {
         return this.props.id ? (
             <div className='edit'>
             <DropDown name='edit'>
-                <p className='dropdown-item'>edit</p>
+                <p className='dropdown-item' onClick={this.props.edit}>edit</p>
                 <p className='dropdown-item' onClick={this.handleDeleteClicked}>delete</p>
             </DropDown>
             </div>

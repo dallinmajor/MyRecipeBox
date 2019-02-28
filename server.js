@@ -5,7 +5,13 @@ const numCPUs = require('os').cpus().length;
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const router = require('./routes')
-const db = require('./config/dbKey');
+let db;
+
+try {
+  db = require('./config/dbKey');
+} catch {
+  return;
+}
 
 const PORT = process.env.PORT || 5000;
 
@@ -28,11 +34,6 @@ if (cluster.isMaster) {
     process.env.MONGODB_URI || db,
     { useNewUrlParser: true }
   );
-
-  // mongoose.connect(
-  //   process.env.MONGODB_URI,
-  //   { useNewUrlParser: true }
-  // );
 
   const app = express();
 
